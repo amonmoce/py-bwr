@@ -20,10 +20,10 @@ signal = np.zeros((len(lines) - 2))
 for i in range(len(signal)):
     signal[i] = float(lines[i + 2].split(",")[1])
 
-baseline = bwr.calc_baseline(signal)
+baseline, ecg_out = bwr(signal)
 
 # Remove baseline from orgianl signal
-ecg_out = signal - baseline
+# ecg_out = signal - baseline
 
 plt.subplot(2, 1, 1)
 plt.plot(signal, "b-", label="signal")
